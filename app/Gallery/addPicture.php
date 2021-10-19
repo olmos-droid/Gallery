@@ -1,4 +1,5 @@
-<?php include_once('_header.php');
+<?php
+include_once('_header.php');
 $filename = $_GET['ruta'] ?>
 <div class="container">
     <div class="card">
