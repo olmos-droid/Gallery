@@ -1,0 +1,25 @@
+th[colspan="2"] {
+    text-align: center;
+}
+th[colspan="4"] {
+    text-align: center;
+}
+th[colspan="3"] {
+    text-align: center;
+}
+body {
+    text-align:center;
+    background-color: rgb(199, 199, 199);
+    padding: 2%;
+}
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+  @media (min-width: 48em) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}
