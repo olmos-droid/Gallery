@@ -45,7 +45,7 @@ function uploadPicture()
                     throw new UploadError("Error: There was a problem uploading your file. Please try again.");
                 }
             } else {
-                throw new UploadError("Error: " . $_FILES["foto"]["error"]);
+                throw new UploadError("Error: There was a problem uploading your file. Please try again." . $_FILES["foto"]["error"]);
             }
         }
     } catch (UploadError $e) {
