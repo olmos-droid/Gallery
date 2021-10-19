@@ -8,18 +8,26 @@ th[colspan="3"] {
     text-align: center;
 }
 body {
-    text-align:center;
-    background-color: rgb(199, 199, 199);
-    padding: 2%;
+    padding: 5px;
+    background-color: #efefef;
+    text-align: center;
 }
 table.center {
-    margin-left:auto; 
-    margin-right:auto;
-  }
-  @media (min-width: 48em) {
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width: 48em) {
     .card-columns {
         -webkit-column-count: 3;
         -moz-column-count: 3;
         column-count: 3;
     }
+}
+#flex-gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+#flex-gallery img {
+    width: 33.3%; /* 2 ITEMS PER ROW, 100% / 3 = 33.3% */
+    height: auto;
 }

@@ -13,6 +13,7 @@
     <div class="container">
         <nav class="navbar navbar-dark bg-dark">
             <a class="navbar-brand">Image's Gallery</a>
+        </br>
         </nav>
     </div>
 </body>
