@@ -7,7 +7,7 @@ class Gallery
   /*Constructor: Recibe la ruta del archivo fotos.txt*/
   function __construct($filename)
   {
-    $this->_filename = $filename;
+    $this->_filename = 'fotos.txt';
   }
   /*
   *Recorre el archivo fotos.txt y para cada titulo_ubicacion$titulo_ubicaciona, crea un
