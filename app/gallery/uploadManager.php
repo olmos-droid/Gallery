@@ -7,7 +7,7 @@
 uploadPicture();
 function uploadPicture()
 {
-    $dir_upload = "./pictures/"; //directorio donde subir las cosas sino existe lo crea y le da permisos
+    $dir_upload = "./pictures/"; //directorio donde subir los archivos, sino existe lo crea y le da permisos
     if (!file_exists($dir_upload)) {
         mkdir($dir_upload, 0777, true);
     }
@@ -35,23 +35,27 @@ function uploadPicture()
                     if (file_exists($dir_upload . $filename)) {
                         throw new UploadError($filename . " is already exists.");
                         die();
-                    } else {
-                        move_uploaded_file($_FILES["foto"]["tmp_name"], $dir_upload . $filename);
-                        $newPath = $dir_upload . $filename;
-                        $titul = $_POST['titul'];
-                        addPictureToFile($newPath, $titul);
                     }
-                } else {
-                    throw new UploadError("Error: There was a problem uploading your file. Please try again.");
-                }
+                } 
+                // else {
+                //     throw new UploadError("Error: There was a problem uploading your file. Please try again.");
+                // }
             } else {
                 throw new UploadError("Error: There was a problem uploading your file. Please try again." . $_FILES["foto"]["error"]);
             }
         }
     } catch (UploadError $e) {
+        move_uploaded_file($_FILES["foto"]["tmp_name"], $dir_upload . $filename);
+        $newPath = $dir_upload . $filename;
+        $titul = $_POST['titul'];
+        addPictureToFile($newPath, $titul);
         header('Location: index.php?upload=error&msg=' . urlencode($e->getMessage()));
         exit;
     }
+    move_uploaded_file($_FILES["foto"]["tmp_name"], $dir_upload . $filename);
+    $newPath = $dir_upload . $filename;
+    $titul = $_POST['titul'];
+    addPictureToFile($newPath, $titul);
     header("Location: index.php?upload=success");
     return $newPath;
 }
