@@ -7,6 +7,10 @@
 uploadPicture();
 function uploadPicture()
 {
+    $filefotos ="fotos.txt"; // archivo que contiene la info del tipo :titulo###nombrefichero
+    if (!file_exists($filefotos)){
+        touch($filefotos,0777,true);
+    }
     $dir_upload = "./pictures/"; //directorio donde subir los archivos, sino existe lo crea y le da permisos
     if (!file_exists($dir_upload)) {
         mkdir($dir_upload, 0777, true);
