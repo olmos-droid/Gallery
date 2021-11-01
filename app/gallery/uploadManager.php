@@ -28,6 +28,7 @@ function uploadPicture()
                 $maxsize = 5 * 1024 * 1024;
                 if ($filesize > $maxsize) {
                     throw new UploadError("Error: File size is larger than the allowed limit.");
+                    die();
                 }
                 // Verify MYME type of the file
                 if (in_array($filetype, $allowed)) {
