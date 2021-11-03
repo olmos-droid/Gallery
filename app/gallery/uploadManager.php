@@ -50,10 +50,10 @@ function uploadPicture()
             }
         }
     } catch (UploadError $e) {
-        move_uploaded_file($_FILES["foto"]["tmp_name"], $dir_upload . $filename);
-        $newPath = $dir_upload . $filename;
-        $titul = $_POST['titul'];
-        addPictureToFile($newPath, $titul);
+        // move_uploaded_file($_FILES["foto"]["tmp_name"], $dir_upload . $filename);
+        // $newPath = $dir_upload . $filename;
+        // $titul = $_POST['titul'];
+        // addPictureToFile($newPath, $titul);
         header('Location: index.php?upload=error&msg=' . urlencode($e->getMessage()));
         exit;
     }
