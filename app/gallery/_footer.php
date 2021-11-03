@@ -1,3 +1,4 @@
+</div>
 <div class="container">
     <footer class="py-2  bg-dark">
         <div class="container">
