@@ -25,7 +25,7 @@ class Gallery
         die;
       }
     } catch (UploadError $e) {
-      header('Location: index.php?upload=error&msg=hola' . urlencode($e->getMessage()));
+      header('Location: index.php?upload=error&msg=' . urlencode($e->getMessage()));
      
     }
 
@@ -64,6 +64,6 @@ class Gallery
 * en la subida de archivos. Por ejemplo:
 * throw new UploadError("Error: Please select a valid file format.");
 */
-class UploadError extends Exception
-{
-}
+// class UploadError extends Exception
+// {
+// }
