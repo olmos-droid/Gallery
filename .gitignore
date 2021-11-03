@@ -1,2 +1,2 @@
 .DS_Store
-docker/logs
+app/Gallery/docker/logs
