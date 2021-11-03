@@ -3,7 +3,7 @@ include('PictureClass.php');
 class Gallery
 {
   private $_filename = '';
-  private $_gallery = array();
+  private $_gallery = [];
 
   function __construct($filename)
   {
@@ -14,9 +14,11 @@ class Gallery
   function loadGallery()
   {
     if (file_exists($this->_filename)) {
-
       $file = fopen($this->_filename, "r");
-
+      echo $file;
+      echo getcwd();
+      die;
+      
       while (!feof($file)) {
         $line = trim(fgets($file));
         $pic_info = explode("###", fgets($line));
