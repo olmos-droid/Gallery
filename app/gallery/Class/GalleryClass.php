@@ -6,42 +6,30 @@ include('PictureClass.php');
 class Gallery
 {
   private $_gallery = array();
-  private $_filename;
-  /*Constructor: Recibe la ruta del archivo fotos.txt*/
+  private $_filename = '';
+
   function __construct($filename)
   {
-    $this->_filename = 'fotos.txt';
+    $this->_filename = $filename;
+    $this->loadGallery();
   }
-  /*
-  *Recorre el archivo fotos.txt y para cada titulo_ubicacion$titulo_ubicaciona, crea un
-  *elemento Picture que lo añade al atributo $_gallery[]
-  */
+
   function loadGallery()
   {
-    try {
-      //code...
-      if (!file_exists($this->_filename)) {
-        throw new UploadError("Error: Please upload file, empty gallery");
-        die;
+    if (!file_exists($this->_filename)) {
+      $file = fopen($this->_filename, "r");
+      while (!feof($file)) {
+        $line = trim(fgets($file));
+        $pic_info = explode("###", fgets($line));
+        $image_path = $image_path = $_SERVER['DOCUMENT_ROOT'] . '/' . $pic_info[1];
+        if ($pic_info[0] && $this->is_image($image_path)) {
+          $picture = new Picture($pic_info[0], $pic_info[1]);
+          array_push($this->_gallery, $picture);
+        }
       }
-    } catch (UploadError $e) {
-      header('Location: index.php?upload=error&msg=' . urlencode($e->getMessage()));
-     
-    }
-
-  
-
-    // fopen($this->_filename, 0777, );
-
-    $fileArray = file($this->_filename);
-    $file = fopen($this->_filename, "r");
-    for ($i = 0; $i < count($fileArray); $i++) {
-      $line = explode("###", fgets($file));
-      $picture = new Picture($line[0], $line[1]);
-      array_push($this->_gallery, $picture);
+      fclose($file);
     }
   }
-
   /*
   *Getters y setters genericos usando la propiedad propertyu_exists para con un get y set poder llamar y setear a todos los atributos por separado
   */
@@ -58,12 +46,14 @@ class Gallery
     }
     return null;
   }
+  public function is_image($path)
+  {
+    $info = getimagesize($path);
+    $image_type = $info[2];
+
+    if (in_array($image_type, array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_BMP))) {
+      return true;
+    }
+    return false;
+  }
 }
-/*
-* Clase personalizada extendida de Exception que utilizaremos para lanzar errores
-* en la subida de archivos. Por ejemplo:
-* throw new UploadError("Error: Please select a valid file format.");
-*/
-// class UploadError extends Exception
-// {
-// }

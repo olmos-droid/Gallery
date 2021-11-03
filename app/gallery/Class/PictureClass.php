@@ -1,8 +1,8 @@
 <?php
 class Picture
 {
-    private $title;
-    private $filename;
+    private $title='';
+    private $filename='';
     /*Constructor*/
     function __construct($title, $filename){
         $this->title=$title;
@@ -26,4 +26,3 @@ class Picture
       return null;
   }    
 }
-?>
