@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES[PICTURE_NAME])) {
     //check if title is in the form
     if (empty($_POST[PICTURE_TITLE])) {
         header('Location: index.php?upload=error&msg=' . urlencode(TITLE_ERROR));
-
         return;
     }
     $upload = new Upload(PICTURE_NAME);
