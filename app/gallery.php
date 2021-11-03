@@ -1,7 +1,7 @@
 <?php
 include_once('_header.php');
 include('./Class/GalleryClass.php');
-$gallery = new Gallery("pictures/list.txt");
+$gallery = new Gallery("pictures/fotos.txt");
 ?>
 <div class="container">
     <div class="card-group flex-gallery">

@@ -22,11 +22,12 @@ class Upload
     function uploadPicture()
     {
         try {
+
             //Check if the folder exist is a valid picture and title
             //$_SERVER['DOCUMENT_ROOT'] return the folder of the server where is our APP
             if (!is_dir($_SERVER['DOCUMENT_ROOT'] . '/' . UPLOAD_FOLDER)) {
 
-                if (!mkdir($_SERVER['DOCUMENT_ROOT'] . '/' . UPLOAD_FOLDER))
+                if (!mkdir($_SERVER['DOCUMENT_ROOT'] . '/' . UPLOAD_FOLDER, 0777, true))
                     throw new UploadError("Error: No se ha podido crear el directorio");
             }
             if (!is_writable($_SERVER['DOCUMENT_ROOT'] . '/' . UPLOAD_FOLDER))
@@ -60,9 +61,12 @@ class Upload
             if (file_exists(UPLOAD_FOLDER . $filename))
                 throw new UploadError("Error: " . $filename . " is already exists.");
 
+        
             // IF NO errors, then move the picture to Folder
+            chmod( UPLOAD_FOLDER. $filename,0777);
             move_uploaded_file($_FILES["picture"]["tmp_name"], UPLOAD_FOLDER . $filename);
             $this->file = UPLOAD_FOLDER . $filename;
+            
             //echo "Your file was uploaded successfully.";
 
         } catch (UploadError $e) {
@@ -75,8 +79,15 @@ class Upload
     function addPictureToFile()
     {
         try {
+            //chekeo que el fotos.txt se cree con
+            if (!file_exists(PICTURES_LIST)) {
+             $fp=fopen(PICTURES_LIST,"w");
+             fclose($fp);
+             chmod(PICTURES_LIST,0777);
+            }
+
             $title = $_POST["title"];
-            $fp = fopen(PICTURES_LIST, 'a'); //opens file in append mode  
+            $fp = fopen(PICTURES_LIST, 'a+'); //opens file in append mode  
             fwrite($fp,  "\n" . $title . '###' . $this->file);
             fclose($fp);
         } catch (Exception $e) {
