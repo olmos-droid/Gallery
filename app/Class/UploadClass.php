@@ -18,7 +18,6 @@ class Upload
     {
         $this->fileName = $fileName;
         $this->uploadPicture();
-    
     }
     function uploadPicture()
     {
@@ -26,7 +25,7 @@ class Upload
             //Check if the folder exist is a valid picture and title
             //$_SERVER['DOCUMENT_ROOT'] return the folder of the server where is our APP
             if (!is_dir($_SERVER['DOCUMENT_ROOT'] . '/' . UPLOAD_FOLDER)) {
-            
+
                 if (!mkdir($_SERVER['DOCUMENT_ROOT'] . '/' . UPLOAD_FOLDER))
                     throw new UploadError("Error: No se ha podido crear el directorio");
             }
@@ -41,6 +40,7 @@ class Upload
             $filename = $_FILES["picture"]["name"];
             $filetype = $_FILES["picture"]["type"];
             $filesize = $_FILES["picture"]["size"];
+
 
             // Verify file extension
             $ext = pathinfo($filename, PATHINFO_EXTENSION);

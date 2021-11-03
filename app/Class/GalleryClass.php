@@ -16,7 +16,7 @@ class Gallery
     if (file_exists($this->_filename)) {
 
       $file = fopen($this->_filename, "r");
-      
+
       while (!feof($file)) {
         $line = trim(fgets($file));
         $pic_info = explode("###", fgets($line));
