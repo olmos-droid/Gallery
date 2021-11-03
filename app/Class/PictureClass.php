@@ -1,13 +1,13 @@
 <?php
 class Picture
 {
-    private $title = '';
-    private $filename = '';
+    private $_title = '';
+    private $_filename = '';
     /*Constructor*/
     function __construct($title, $filename)
     {
-        $this->title = $title;
-        $this->filename = $filename;
+        $this->_title = $title;
+        $this->_filename = $filename;
     }
     /*
   *Getters. Lo que quiere decir que los atributos de
