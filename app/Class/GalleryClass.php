@@ -15,9 +15,7 @@ class Gallery
   {
     if (file_exists($this->_filename)) {
       $file = fopen($this->_filename, "r");
-      echo $file;
-      echo getcwd();
-      die;
+      
       
       while (!feof($file)) {
         $line = trim(fgets($file));

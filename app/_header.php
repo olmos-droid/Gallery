@@ -34,7 +34,7 @@
     if (isset($_GET['upload']) && $_GET['upload'] == "error") { ?>
         <div class='container'>
             <div class='alert alert-danger' role='alert'>
-                <h3>"<?php $_GET['msg'] ?>"</h3>
+                <h3><?php $_GET['msg'] ?></h3>
             </div>
         </div>
     <?php } ?>

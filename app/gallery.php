@@ -1,6 +1,8 @@
 <?php
 include_once('_header.php');
 include('./Class/GalleryClass.php');
+echo 'dentro gallery php';
+die;
 $gallery = new Gallery("pictures/fotos.txt");
 ?>
 <div class="container">
@@ -24,4 +26,4 @@ $gallery = new Gallery("pictures/fotos.txt");
         ?>
     </div>
 </div>
-<?php include_once('_footer.php') ?>
+<?php include_once('_footer.php') ?>;
