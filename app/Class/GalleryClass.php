@@ -13,6 +13,8 @@ class Gallery
 
   function loadGallery()
   {
+    echo 'dentro load';
+    die;
     if (file_exists($this->_filename)) {
       $file = fopen($this->_filename, "r");
       
