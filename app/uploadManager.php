@@ -17,8 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES[PICTURE_NAME])) {
     //If File is uploaded correcty, we added to our file
     if ($upload->getFile() != null)
         $upload->addPictureToFile();
+
     // Any error redirect with error message
-    if ($upload->getError() != null)
+    if ($upload->getError() != null) {
         header('Location: index.php?upload=error&msg=' . urlencode($upload->getError()));
-    else header("Location: index.php?upload=success");
+    } else header("Location: index.php?upload=success");
 }

@@ -61,33 +61,31 @@ class Upload
             if (file_exists(UPLOAD_FOLDER . $filename))
                 throw new UploadError("Error: " . $filename . " is already exists.");
 
-        
+
             // IF NO errors, then move the picture to Folder
-            chmod( UPLOAD_FOLDER. $filename,0777);
+            chmod(UPLOAD_FOLDER . $filename, 0777);
             move_uploaded_file($_FILES["picture"]["tmp_name"], UPLOAD_FOLDER . $filename);
             $this->file = UPLOAD_FOLDER . $filename;
-            
+
             //echo "Your file was uploaded successfully.";
 
         } catch (UploadError $e) {
-            echo $e;
             $this->error = $e->getMessage();
         } catch (Exception $e) {
-            echo $e;
             $this->error = $e->getMessage();
         }
     }
-    
+
     function addPictureToFile()
     {
         try {
             //chekeo que el fotos.txt se cree con
             if (!file_exists(PICTURES_LIST)) {
-                $fp=fopen(PICTURES_LIST,"w");
+                $fp = fopen(PICTURES_LIST, "w");
                 fclose($fp);
-                chmod(PICTURES_LIST,0777);
+                chmod(PICTURES_LIST, 0777);
             }
-            
+
             $title = $_POST["title"];
             $fp = fopen(PICTURES_LIST, 'a+'); //opens file in append mode  
             fwrite($fp,  "\n" . $title . '###' . $this->file);
@@ -95,7 +93,6 @@ class Upload
         } catch (Exception $e) {
             echo $e;
             $this->error = $e->getMessage();
-            
         }
     }
     function getError()
