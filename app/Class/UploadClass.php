@@ -70,28 +70,32 @@ class Upload
             //echo "Your file was uploaded successfully.";
 
         } catch (UploadError $e) {
+            echo $e;
             $this->error = $e->getMessage();
         } catch (Exception $e) {
+            echo $e;
             $this->error = $e->getMessage();
         }
     }
-
+    
     function addPictureToFile()
     {
         try {
             //chekeo que el fotos.txt se cree con
             if (!file_exists(PICTURES_LIST)) {
-             $fp=fopen(PICTURES_LIST,"w");
-             fclose($fp);
-             chmod(PICTURES_LIST,0777);
+                $fp=fopen(PICTURES_LIST,"w");
+                fclose($fp);
+                chmod(PICTURES_LIST,0777);
             }
-
+            
             $title = $_POST["title"];
             $fp = fopen(PICTURES_LIST, 'a+'); //opens file in append mode  
             fwrite($fp,  "\n" . $title . '###' . $this->file);
             fclose($fp);
         } catch (Exception $e) {
+            echo $e;
             $this->error = $e->getMessage();
+            
         }
     }
     function getError()

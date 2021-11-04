@@ -11,8 +11,8 @@ $gallery = new Gallery("pictures/fotos.txt");
                     <div class="custom-column-content">
                         <?php echo $pic->__get('_filename'); ?>
                         <img src="<?php echo $pic->__get('_filename') ?>" style="object-fit:fill;width:90%;height:300;border: solid 1px #CCC" alt="">
-                        <p align="center"><?php echo $pic->__get('_title') ?></p>
-                        <?php echo $pic->__get('_title'); ?>
+                        <p align="center"><?php echo $pic->__get('_title') ?>
+                    </p>
                     </div>
                 </div>
             </div>

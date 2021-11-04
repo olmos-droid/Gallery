@@ -44,6 +44,8 @@ class Gallery
     }
     return null;
   }
+
+  
   public function is_image($path)
   {
     $info = getimagesize($path);
