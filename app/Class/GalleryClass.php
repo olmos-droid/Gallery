@@ -13,15 +13,12 @@ class Gallery
 
   function loadGallery()
   {
-    echo 'dentro load';
-    die;
     if (file_exists($this->_filename)) {
       $file = fopen($this->_filename, "r");
       
-      
       while (!feof($file)) {
         $line = trim(fgets($file));
-        $pic_info = explode("###", fgets($line));
+        $pic_info = explode("###", $line);
         $image_path = $image_path = $_SERVER['DOCUMENT_ROOT'] . '/' . $pic_info[1];
         if ($pic_info[0] && $this->is_image($image_path)) {
           $picture = new Picture($pic_info[0], $pic_info[1]);
